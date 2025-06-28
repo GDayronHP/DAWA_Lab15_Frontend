@@ -6,7 +6,7 @@ export default function OrdenesPage() {
   const [ordenes, setOrdenes] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3001/ordenes')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/ordenes`)
       .then(res => res.json())
       .then(setOrdenes)
   }, [])
@@ -15,7 +15,7 @@ export default function OrdenesPage() {
     const confirm = window.confirm('¿Estás seguro de eliminar esta orden?')
     if (!confirm) return
 
-    await fetch(`http://localhost:3001/ordenes/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/ordenes/${id}`, {
       method: 'DELETE'
     })
 

@@ -15,7 +15,7 @@ export default function LaboratorioForm({ isEdit = false, id }) {
 
   useEffect(() => {
     if (isEdit && id) {
-      fetch(`http://localhost:3001/laboratorios/${id}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/laboratorios/${id}`)
         .then(res => res.json())
         .then(data => setForm(data))
     }
@@ -29,8 +29,8 @@ export default function LaboratorioForm({ isEdit = false, id }) {
     e.preventDefault()
     const method = isEdit ? 'PUT' : 'POST'
     const url = isEdit
-      ? `http://localhost:3001/laboratorios/${id}`
-      : `http://localhost:3001/laboratorios`
+      ? `${process.env.NEXT_PUBLIC_API_URL}/laboratorios/${id}`
+      : `${process.env.NEXT_PUBLIC_API_URL}/laboratorios`
 
     await fetch(url, {
       method,

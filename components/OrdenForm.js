@@ -14,12 +14,12 @@ export default function OrdenForm({ isEdit = false, id }) {
   const router = useRouter()
 
   useEffect(() => {
-    fetch('http://localhost:3001/laboratorios')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/laboratorios`)
       .then(res => res.json())
       .then(setLabs)
 
     if (isEdit && id) {
-      fetch(`http://localhost:3001/ordenes/${String(id)}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/ordenes/${String(id)}`)
         .then(res => res.json())
         .then(data => {
           // Asegura el formato YYYY-MM-DD para el input tipo date
@@ -37,8 +37,8 @@ export default function OrdenForm({ isEdit = false, id }) {
     e.preventDefault()
     const method = isEdit ? 'PUT' : 'POST'
     const url = isEdit
-      ? `http://localhost:3001/ordenes/${id}`
-      : `http://localhost:3001/ordenes`
+      ? `${process.env.NEXT_PUBLIC_API_URL}/ordenes/${id}`
+      : `${process.env.NEXT_PUBLIC_API_URL}/ordenes`
 
     await fetch(url, {
       method,

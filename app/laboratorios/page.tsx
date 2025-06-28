@@ -6,7 +6,7 @@ export default function LaboratoriosPage() {
   const [labs, setLabs] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3001/laboratorios')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/laboratorios`)
       .then(res => res.json())
       .then(setLabs)
   }, [])
@@ -15,7 +15,7 @@ export default function LaboratoriosPage() {
     const confirm = window.confirm('¿Estás seguro de eliminar este laboratorio?')
     if (!confirm) return
 
-    await fetch(`http://localhost:3001/laboratorios/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/laboratorios/${id}`, {
       method: 'DELETE'
     })
 
