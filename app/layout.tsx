@@ -9,8 +9,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-      </head>
       <body className="h-screen w-screen">
         <Navbar />
         <main className="max-w-6xl mx-auto p-4 ">{children}</main>
